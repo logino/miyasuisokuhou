@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html, charset=utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@miyasuisokuhou">
+  <meta property="og:url" content="http://miyasui.net">
+  <meta property="og:description" content="広告のない、見やすいまとめブログ">
+  <meta property="og:title" content="見やすい速報">
+  <meta property="og:image" content="http://miyasui.net/img/logo.jpg">
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="miyasui.ico" /><link rel="icon" href="img/miyasui.ico"/>
+<style>
+* {margin: 0;padding: 0;}
+</style>
+  <link rel="stylesheet" href="../css/top750.css" media="screen and (max-width:800px)">
+  <link rel="stylesheet" href="../css/top1000.css" media="screen and (min-width:800px)">
+  <title>見やすい速報</title>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <a href="index.html"><img id="img_header" src="img/header.png" align="left"></img></a>
+      <label id="label_button_open" for="open"><img id="img_button_open" src="../img/menu.jpg"></img>
+      </label>
+    </div>
+    <div id="message"><span style="font-size:30px;color:red;">☆</span>PC(Chrome,IE,Firefox),iphone,Android(Chrome)で動作確認済みです。</div>
+    <input id="open" type="checkbox">
+    <label id="label_button_close" for="open"></label>
+    <?php include("php/generateNavIndex.php");?>
+    <div id='main' class="clearfix">
+ <!--     <div id="RSS">
+        <script type="text/javascript">
+        var blogroll_channel_id = 245716;
+        </script>
+        <script type="text/javascript" charset="utf-8" src="http://blogroll.livedoor.net/js/blogroll.js"></script>
+      </div>-->
+      <?php
+      if(isset($_GET["search"])){
+        if(!$_GET["search"]==''){
+          $search=filter_input(INPUT_GET,"search");
+          $category="all";
+          $filepath="csv/all.csv";
+          $file=new SplFileObject($filepath);
+          $file->setFlags(SplFileObject::READ_CSV);
+          $articles=0;
+          foreach ($file as $line) {
+            if(strpos($line[1],$search)!==false){
+              $records[]=$line;
+              $articles++;
+            }
+          }
+          echo "<br>「".$search."」の検索結果:".$articles."件";
+          echo '<div id="thumbnail_box"></div>';
+        }else{
+          $articles=0;
+          $category="all";
+          echo "<br>検索失敗：文字が入力されていませんでした。";
+          echo '<div id="thumbnail_box"></div>';
+        }
+      }else{
+        $category=filter_input(INPUT_GET,"category");
+        if($category=="")$category="all";
+        $filepath="csv/".$category.".csv";
+        $file=new SplFileObject($filepath);
+        $file->setFlags(SplFileObject::READ_CSV);
+        $articles=0;
+        foreach ($file as $line) {
+          $records[]=$line;
+          $articles++;
+        }
+      }
+      $currentPageNumber=filter_input(INPUT_GET,"page");
+      if($currentPageNumber==''||$currentPageNumber>$articles/5+1){
+        $currentPageNumber=1;
+        $_GET["page"]=1;
+      }
+      for($i=0;$i<($articles>=5?($articles-$currentPageNumber*5>=0):false?5:$articles%5);$i++){
+        $records[$articles-(5*($currentPageNumber-1))-$i-1][7]=str_replace("，",",",$records[$articles-(5*($currentPageNumber-1))-$i-1][7]);
+        echo <<< EOM
+          <div class="thread">
+            <div class="thread_title">
+              <a href="{$records[$articles-(5*($currentPageNumber-1))-$i-1][5]}" id="thumb_title" target="_blank">{$records[$articles-(5*($currentPageNumber-1))-$i-1][1]}</a>
+            </div>
+            <div class="thread_img">
+                <a class="thread_img" href="img/{$records[$articles-(5*($currentPageNumber-1))-$i-1][5]}" target="_blank">
+                <img class="thread_img" src="../img/{$records[$articles-(5*($currentPageNumber-1))-$i-1][6]}"></img></a>
+            </div>
+            <div class="thread_main">
+              <div class="res">
+              {$records[$articles-(5*($currentPageNumber-1))-$i-1][7]}
+              </div>
+            </div>
+            <div class="proceed_to_page">
+              <a class="proceed_to_page" href="{$records[$articles-(5*($currentPageNumber-1))-$i-1][5]}" target="_blank"><button class="proceed_to_page" type="button">続きを読む</button></a>
+            </div>
+            <div class="thread_footer_{$records[$articles-(5*($currentPageNumber-1))-$i-1][3]}">
+              <ul class="thread_footer">
+                <li class="thread_footer thread_footer_time_modified_label">更新日時：</li>
+                <li class="thread_footer thread_footer_time_modified">{$records[$articles-(5*($currentPageNumber-1))-$i-1][2]}</li>
+                <li class="thread_footer thread_footer_category_label">カテゴリ：</li>
+                <li class="thread_footer thread_footer_category"><a style="text-decoration:none" href="index.html?category={$records[$articles-(5*($currentPageNumber-1))-$i-1][3]}">{$records[$articles-(5*($currentPageNumber-1))-$i-1][4]}</a></li>
+                <li class="thread_footer button_twitter_share"><a href="https://twitter.com/share" class="button_twitter_share" data-count="horizontal" TARGET="blank" data-lang="ja" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;"><img id="button_twitter_share_img"class="button_twitter_share" src="img/tweet.jpg"></a></li>
+              </ul>
+            </div>
+          </div>
+EOM;
+      }
+      ?>
+    </div><!-- メインカラム終了 -->  
+
+      <div id="footer">
+        <div class="pagination-holder clearfix">
+          <div id="light-pagination" class="pagination simple-pagination light-theme">
+            <ul id="pager">
+              <?php
+              $pages=ceil($articles/5);
+              $displayedPages=10;
+
+              function getInterval($displayedPages,$pages,$currentPageNumber){
+                if($pages>$displayedPages) return array($currentPageNumber<5 ? 1: ($currentPageNumber>$pages-5?$pages-9:$currentPageNumber-4),$currentPageNumber>$pages-5 ? $pages:($currentPageNumber<5?10:$currentPageNumber+5));
+                else return array(1,$pages);
+              }
+
+              function getEdge($displayedPages,$pages,$currentPageNumber){
+                if($pages>$displayedPages/2){
+                  if($currentPageNumber<3){
+                    $leftedge=1;
+                  }else if($currentPageNumber>$pages-2){
+                    $leftedge=$pages-4;
+                  }else{
+                    $leftedge=$currentPageNumber-2;
+                  }
+                $rightedge=$leftedge+4;
+                }
+                else{
+                  $leftedge=1;
+                  $rightedge=$pages;
+                }
+                return array($leftedge,$rightedge);
+              }
+
+              function draw($IntervalPageNumber,$EdgeNumber,$currentPageNumber,$category){
+
+                for($i=$IntervalPageNumber[0];$i<$EdgeNumber[0];$i++){
+                  if($i==$currentPageNumber){
+                    echo '<span class="current edge-pager">'.$i.'</span>';
+                    continue;
+                  }
+                  else{
+                    if($category)
+                      echo "<li><a href= index.html?page=".$i."&category=".$category.' class="page-link light-theme edge-pager">'.$i."</a></li>";
+                    else
+                      echo "<li><a href= index.html?page=".$i.' class="page-link light-theme edge-pager">'.$i."</a></li>";
+                  }
+                }
+                for($i=$EdgeNumber[0];$i<=$EdgeNumber[1];$i++){
+                  if($i==$currentPageNumber){
+                    echo '<span class="current">'.$i.'</span>';
+                    continue;
+                  }
+                  else{
+                    if($category)
+                      echo "<li><a href= index.html?page=".$i."&category=".$category.' class="page-link light-theme">'.$i."</a></li>";
+                    else
+                      echo "<li><a href= index.html?page=".$i.' class="page-link light-theme">'.$i."</a></li>";
+                  }
+                }
+                for($i=$EdgeNumber[1]+1;$i<=$IntervalPageNumber[1];$i++){
+                  if($i==$currentPageNumber){
+                    echo '<span class="current edge-pager">'.$i.'</span>';
+                    continue;
+                  }
+                  else{
+                    if($category)
+                      echo "<li><a href= index.html?page=".$i."&category=".$category.' class="page-link light-theme edge-pager">'.$i."</a></li>";
+                    else
+                      echo "<li><a href= index.html?page=".$i.' class="page-link light-theme edge-pager">'.$i."</a></li>";
+                  }
+                }
+              }
+
+              draw(getInterval($displayedPages,$pages,$currentPageNumber),getEdge($displayedPages,$pages,$currentPageNumber),$currentPageNumber,$category);
+              ?>
+            </ul>
+          </div>
+        </div>
+
+
+      </div><!-- フッタ終了 -->
+      <div id="backscreen"></div>
+    </div><!-- コンテナ終了 -->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-105852489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+  </html>

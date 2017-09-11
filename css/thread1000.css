@@ -1,0 +1,485 @@
+@charset "utf-8";
+
+div#nico_box0{
+	display: none;
+}
+#nico_box0_open:checked~div#nico_box0{
+	display: block;
+}
+
+input#youtube_box0_open{
+	display: none;
+}
+img.youtube_play{
+	width: 50px;
+}
+div#youtube_box0{
+	display: none;
+}
+#youtube_box0_open:checked~div#youtube_box0{
+	display: block;
+}
+div.imgur_box0{
+  visibility: hidden;
+}
+input#imgur_box0_open:checked~ .imgur_box0 {
+visibility: visible;
+}
+html{
+}
+/* --- 全体の背景・テキスト --- */
+body {
+background-color: #E0E1E3; /* ページの背景色 */
+color: #000000; /* 全体の文字色 */
+font-size: 100%; /* 全体の文字サイズ */
+width:1000px;
+margin-left:auto;
+margin-right:auto;
+height: 100%;
+}
+
+/* --- 全体のリンクテキスト --- */
+a:link { color: #000000; }
+a:visited { color: #000000; }
+a:hover { color: #8e8e8e; }
+a:active { color: #9A9EA7; }
+
+/* --- コンテナ --- */
+#container {
+width: 1000px; /* ページの幅 */
+border-left: 1px #CCCCCC solid; /* 左の境界線 */
+border-right: 1px #CCCCCC solid; /* 右の境界線 */
+  margin-bottom:50px;
+    margin-top: 10px;
+background-color: #ffffff;
+overflow: hidden;
+}
+/* --- ヘッダ --- */
+#header{
+background-color: #ffffff; /* ヘッダの背景色 */
+width:1000px;
+height: 120px;
+border-bottom:0.5px solid #c0c0c0;
+
+}
+img#aramaki{
+	margin-top: 40px;
+}
+input#open{
+	display: none;
+}
+label#label_button_open{
+	display: none;
+}
+/* --- ナビゲーション --- */
+#container>#nav{
+	height: auto;
+}
+div#nav {
+float: right;
+width: 198px; /* サイドバーの幅 */
+}
+div#nav0{
+	font-size:35px;
+	padding-top:20px; 
+	padding-left: 10px;
+	padding-bottom: 20px;
+}
+#twitter_follow_btn{
+	width:180px;
+	height:45px;
+	margin-top: 10px;
+}
+div#nav1{
+	padding-top:20px; 
+	padding-left: 10px;
+	padding-bottom: 20px;
+	border-top: 0.5px solid #c0c0c0;
+}
+ul#search{
+	list-style: none;
+}
+input#search_thread{
+	width:175px;
+	height:30px;
+	font-size: 20px;
+	border:0.5px solid #c0c0c0;
+}
+input#button_search{
+	margin-top: 3px;
+	width:180px;
+	height:22px;
+	font-size: 18px;
+
+	background-color:#F5F5F5;
+	border:0.5px solid #c0c0c0;
+	border-width:1px;
+	border-style:solid;
+	border-radius:0;
+	cursor: pointer;
+}
+div#nav2{
+	border-top: 0.5px solid #c0c0c0;
+	padding-top:10px; 
+	padding-left: 10px;
+	padding-bottom: 20px;}
+ul#category{
+list-style-type: none;
+}
+li#category{
+	margin-top: 5px;
+	margin-left: 10px;
+}
+a.category{
+	text-decoration: none;
+	font-size:22px;}
+
+/* --- メインカラム --- */
+div#main {
+float: left;
+width: 800px; /* メインカラムの幅 */
+border-right:0.5px solid #c0c0c0;
+}
+div#RSS{
+	padding-top: 10px;
+    padding-left: 10px;
+    border-bottom: 0.5px solid #c0c0c0;
+ }
+.blogroll-channel,
+.blogroll-channel * {
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-align: left;
+    text-decoration: none;
+
+}
+.blogroll-channel {
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.blogroll-channel .blogroll-list-wrap {
+    margin-bottom: 10px;
+}
+
+.blogroll-channel .blogroll-list {
+    list-style-type: none;
+    margin-bottom: 3px;
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+.blogroll-channel .blogroll-list img {
+    vertical-align: middle;
+}
+
+.blogroll-channel img.blogroll-icon,
+.blogroll-channel img.blogroll-favicon {
+    margin: 0 5px 0 0;
+}
+
+.blogroll-channel img.blogroll-favicon {
+	width: 16px;
+	height: 16px;
+}
+
+.blogroll-channel a.blogroll-link {}
+
+.blogroll-channel .blogroll-new-entry {
+    margin-left: 5px;
+    color: red;
+}
+
+.blogroll-channel .blogroll-clip,
+.blogroll-channel .blogroll-hatebu {
+    margin: 0 0 0 5px;
+}
+.blogroll-channel .blogroll-link-time {
+    margin: 0 0 0 3px;
+    color: #666;
+    font-size: 10px;
+}
+.blogroll-channel .blogroll-ad-img {
+}
+.blogroll-channel .blogroll-ad-text {
+    margin-top: 5px;
+    color: #666;
+    font-size: 12px;
+}
+ .blogroll-channel {
+	height: 150px !important;
+	width: 750px;
+	overflow-y:none;
+}
+ .blogroll-inner{
+ 	float: left;
+ 	width: 50%;
+ }
+div#thread{
+	width: 800px;
+}
+div#thread_img{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+img#thread_img{
+    max-width: 800px;
+    max-height: 400px;
+}
+
+div#thread_title{
+	margin-bottom: 20px;
+	margin-top: 30px;
+	margin-left: 20px;
+	padding: 10px;
+    padding-bottom: 5px;
+	width: 730px;
+	border-bottom: 0.5px solid #c0c0c0;
+	border-left:5px solid #000000;
+	font-size: 27px;
+}
+span#thread_title{
+	padding-left: 10px;
+	line-height: 120%;
+}
+div#thread_main{
+	margin-left: 20px;
+}
+p.quote_thread{
+	text-decoration: none;
+	margin-left: 100px;
+}
+a.quote_thread_address{
+	text-decoration: none;
+}
+
+div.thread_img_main{
+	text-align: center;
+}
+img.thread_img_main{
+	max-height:400px;
+}
+div.res{
+	/*background-color:#F0E0D0;*/
+	padding: 10px;
+	margin-bottom: 30px;
+	margin-left: 20px;
+	border-left: 0.7px solid #c0c0c0;
+	width:680px;
+	font-style: bold;
+}
+div.t_h{
+	margin-left: 5px;
+	font-size: 12px;
+	color:gray ;
+}
+div.reply{	
+	margin-left: 70px;
+}
+span.name_res{
+}
+span.id_crazy1{
+	color:blue;
+	font-size: 16px;
+}
+span.id_crazy2{
+	color: purple;
+}
+span.id_crazy3{
+	color: green;
+	font-size: 16px;
+}
+span.id_crazy4{
+	color: yellow;
+	font-size: 16px;
+}
+span.id_crazy5{
+	color: lime;
+	font-size: 16px;
+}
+span.id_crazy6{
+	color:orange;
+	font-size: 16px;
+}
+span.id_crazy7{
+	color:aqua;
+	font-size: 16px;
+}
+span.id_crazy8{
+	color: salmon;
+	font-size: 16px;
+}
+span.id_crazy9{
+	color:lightgreen;
+	font-size: 16px;
+}
+span.id_primary{
+	all:initial;
+	font-size: 16px;
+	color:red;
+}
+div.t_b{
+	margin-top: 20px;
+  font-size: 20px;
+	padding-left: 20px;
+	line-height:120%;
+}
+
+
+li#thread_footer_time_modified_label{
+}
+li.thread_footer{
+	display: inline-block; /* 横並び */
+    list-style:none;
+    vertical-align: middle;
+}
+li#thread_footer_time_modified_label{
+	width: 80px;
+	display: none;
+}
+li#thread_footer_time_modified{
+  font-size: 20px;
+}
+li#thread_footer_category_label{
+	display: none;
+	width: 80px;
+}
+li#thread_footer_category{
+  font-size: 20px;
+  margin-left: 20px;
+}
+img.button_twitter_share{
+width:140px;
+height:35px;
+margin-left: 20px;
+}
+div.thread_footer{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+div#thread_footer_chat{
+	margin-left: 280px;
+}
+div#thread_footer_funnyl{
+	margin-left:240px;
+}
+div#thread_footer_funnys{
+	margin-left:240px;
+}
+div#thread_footer_truestory{
+	margin-left: 220px;
+}
+div#thread_footer_fiction{
+	margin-left: 260px;
+}
+div#thread_footer_introduction{
+	margin-left:240px;
+}
+div#thread_footer_content{
+	margin-left: 260px;
+}
+div#thread_footer_words{
+	margin-left: 220px;
+}
+div#thread_footer_lifehack{
+	margin-left: 220px;
+}
+div#thread_footer_that{
+	margin-left:240px;
+}
+div#thread_footer_crazy{
+	margin-left: 240px;
+}
+div#thread_footer_special{
+    margin-left: 280px;
+}
+
+
+.light-theme a, .light-theme span {
+	float: left;
+	color: #000000;
+	font-size:40px;
+	font-weight: normal;
+	text-align:center;
+	border-right: 0.5px solid #CCCCCC;
+	border-top: 0.5px solid #cccccc;
+	border-bottom: 0.5px solid #cccccc;
+	border-bottom-style: 1px;
+	width: 398.5px;
+	height: 80px;
+	text-decoration: none;
+	line-height:80px;
+	background-color: #F5F5F5;
+}
+.simple-pagination li {
+	list-style: none;
+}
+ul#pagers{
+	width:805px;
+	overflow:hidden;
+} 
+div#comment_view_box{
+	clear: both;
+	margin-top: 30px;
+}
+div#message_no_comments{
+margin-left: 260px;}
+div#comments{
+	margin-top: 100px;
+	margin-left: 40px;
+}
+div.comment{
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+	border-left: 0.7px solid #c0c0c0;
+	width:650px;
+}
+div.comment_body{
+	margin-top: 30px;
+	padding-bottom: 40px;
+}
+span.comment_id{
+	color:#66b203;
+}
+span.comment_name{
+	color:#66b203;
+}
+span.comment_date{
+	color:#66b203;
+}
+div#comment_form_box{
+margin-top: 50px;
+padding-bottom: 50px;
+}
+.comment_form{
+	width:600px;
+	margin-bottom: 15px;
+}
+li#comment_form_note{
+list-style-type: none;
+}
+#comment_form{
+	margin-left: 90px;
+}
+
+.btn{display:inline-block;margin:6px;
+	height: 60px;
+	background-color:#F5F5F5;
+	border-width:0.5px;
+	border-style:solid;
+	border-radius:0;
+	cursor: pointer;
+}
+	/* --- フッタ --- */
+div#footer {
+	clear: both;
+border-right: 0.5px solid #c0c0c0;
+width:800px;
+}

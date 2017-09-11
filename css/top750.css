@@ -1,0 +1,378 @@
+@charset "utf-8";
+
+/* --- 全体の背景・テキスト --- */
+html{
+	margin-left: 0px;
+}
+body{
+margin: 0px;
+margin-left: 0px;
+padding: 0px;
+background-color: #E0E1E3; /* ページの背景色 */
+color: #000000; /* 全体の文字色 */
+font-size: 100%; /* 全体の文字サイズ */
+width: 750px;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* --- 全体のリンクテキスト --- */
+a:link { color: #000000; }
+a:visited { color: #000000; }
+a:hover { color: #9A9EA7; }
+a:active { color: #9A9EA7; }
+
+/* --- コンテナ --- */
+#container {
+width: 750px; /* ページの幅 */
+margin: 0px auto; /* センタリング */
+border-left: 0.1px #c0c0c0 solid; /* 左の境界線 */
+border-right: 0.1px #c0c0c0 solid; /* 右の境界線 */
+background-color: #ffffff;
+margin-top: 10px;
+margin-bottom:50px;
+padding: 0px;
+}
+
+/* --- ヘッダ --- */
+#header {
+background-color: #ffffff; /* ヘッダの背景色 */
+width: 750px;
+float: right;
+border-bottom:0.5px solid #c0c0c0;
+}
+img#img_button_open{
+	margin-left: 150px;
+	width: 80px;
+	padding: 10px;
+	float: right;
+	color: gray;
+}
+img#img_header{
+float: left;
+}
+img.aramaki{
+	display: none;
+}
+div#message{
+	padding-top: 120px;
+	font-size: 20px;
+	padding-bottom: 20px;
+	padding-left:20px;
+}
+
+/* --- ナビゲーション --- */
+
+#nav{
+  position: fixed;
+  top: 0;
+  right: -340px; /* メニューのwidth + padding */
+  width: 300px; /* メニューのwidth */
+  height: 100%;
+  margin-top: 100px;
+  transition: left .5s, right .5s; /* アニメーション */
+  background-color: rgba(255, 255, 255, 1);
+  border:0.5px solid #c0c0c0;
+  z-index: 3;
+}
+#label_button_open{
+  font-size: 50px;
+  cursor: pointer;
+
+}
+#label_button_open:hover{
+  text-decoration: underline;
+}
+input#open{
+	display: none;
+} 
+#open:checked ~ #nav {
+  right: 0;
+}
+#label_button_close{
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+visibility: hidden;
+z-index:2 ;
+}
+#open:checked ~ #label_button_close{
+visibility: visible;
+}
+
+#backscreen{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: -100%;
+	top: 0;
+	transition:left .5s,right .5s;
+	background-color: black;
+	z-index: 1;
+	opacity: 0.5;
+}
+#open:checked~#backscreen{
+left: 0;
+}
+
+div#nav {
+float: right;
+width: 300px; /* サイドバーの幅 */
+}
+div#nav0{
+	padding-bottom: 30px;
+	padding: 10px;
+	font-size: 50px;
+	border-bottom: 0.5px solid #c0c0c0;
+}
+#comment_author{
+	text-decoration: none;
+}
+#twitter_follow_btn{
+	width:280px;
+	height:70px;
+}
+div#nav1{
+	width: 300px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+ul#search{
+	list-style: none;
+}
+input#search_thread{
+	width:270px;
+	height:60px;
+	font-size: 30px;
+	border:0.5px solid #c0c0c0;
+}
+input#button_search{
+	margin-top: 5px;
+	width:275px;
+	height:50px;
+	font-size: 30px;
+	background-color:#F5F5F5;
+	border:0.5px solid #c0c0c0;
+	border-width:1px;
+	border-style:solid;
+	border-radius:0;
+	cursor: pointer;
+}
+input#button_search:hover{
+background-color:#d0d0d0;
+}
+
+div#nav2{
+	border-top: 0.5px solid #c0c0c0;
+    padding: 10px;
+    padding-bottom: 30px;
+}
+ul#category{
+	list-style:none;
+}
+li#category{
+	margin-top: 6px;
+	margin-left: 10px;
+}
+a.category{
+	text-decoration: none;
+	font-size:40px;}
+div#nav3{
+border-top: 0.5px solid #c0c0c0;
+padding-top: 30px;
+display: none;
+}
+
+
+/* --- メインカラム --- */
+div#main {
+width: 750px; /* メインカラムの幅 */
+border-right: 0.5px solid #c0c0c0;
+float: left;
+} 
+div.thread{
+    padding-top: 20px;
+    border-top:0.5px solid #c0c0c0;
+	width:750px;
+}
+div.thread_title{
+	width: 650px;
+	margin-left: 30px;
+	border-spacing-bottom: 10px;
+	border-bottom: 0.5px solid #c0c0c0;
+	border-left:5px solid #000000;
+	padding: 10px;
+    padding-bottom: 5px;
+}
+.thread_title a{
+	text-decoration:none;
+	font-size: 28px;
+	line-height: 120%;
+	width: 650px;}
+div.thread_img{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+img.thread_img{      
+	max-width: 600px;
+    max-height: 300px;
+}
+div.thread_main{
+	padding: 10px;
+	margin-left:50px;
+	margin-right: 30px;
+	border-left:0.5px solid #c0c0c0;
+　　word-wrap: break-word;
+}
+div.t_h{
+	margin-top: 5px;
+	margin-left: 5px;
+	font-size: 13px;
+	color: gray;
+}
+div.t_b{
+	margin-top: 10px;
+	margin-left: 15px;
+	font-size: 22px;
+	line-height: 120%;
+word-break:break-all;
+}
+div.proceed_to_page{
+  width: 100%;
+  text-align: center;
+  margin-bottom:30px;
+}
+button.proceed_to_page{
+	background-color: #f5f5f5;
+	border:1px solid #c0c0c0;
+	border-radius: 0;
+	cursor: pointer;
+	width: 300px;
+	height: 60px;
+	  font-size: 24px;
+
+}
+button.proceed_to_page:hover{
+	background-color: #f5f5f5;
+}
+a.proceed_to_page{
+	display: block;
+	width: 100%;
+	height: 100%;
+  text-decoration: none;
+  font-weight: 200;
+  padding-top: 13px;
+}
+a.proceed_to_page:hover{
+	color: black;
+}
+li.thread_footer{
+	display: inline-block; /* 横並び */
+    list-style:none;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+li.thread_footer_category_label{
+	display: none;
+	width:80px;
+}
+li.thread_footer_category{
+	font-size:20px;
+}
+li.thread_footer_category>a{
+	color: gray;
+}
+li.thread_footer_time_modified_label{
+	width: 80px;
+	font-size: 16px;
+	display: none;
+}
+li.thread_footer_time_modified{
+	width: 270px;
+	font-size: 20px;
+	color: gray;
+}
+div.thread_footer_chat{
+	margin-left: 260px;
+}
+div.thread_footer_funnyl{
+	margin-left: 220px;
+}
+div.thread_footer_funnys{
+	margin-left: 220px;
+}
+div.thread_footer_truestory{
+	margin-left: 200px;
+}
+div.thread_footer_fiction{
+	margin-left: 230px;
+}
+div.thread_footer_introduction{
+	margin-left: 220px;
+}
+div.thread_footer_content{
+	margin-left: 240px;
+}
+div.thread_footer_words{
+	margin-left: 200px;
+}
+div.thread_footer_lifehack{
+	margin-left: 200px;
+}
+div.thread_footer_that{
+	margin-left: 220px;
+}
+div.thread_footer_crazy{
+	margin-left: 220px;
+}
+div.thread_footer_special{
+    margin-left: 260px;
+}
+img.button_twitter_share{
+width:140px;
+height:35px;
+margin-left: 18px;
+}
+/* --- フッタ --- */
+div#footer {
+width: 710px;/*ページャーが一行に収まらないおそれがあるため少し大きめに獲る*/
+}
+ul#pager{
+}
+#light-pagination{
+	width: 753px;
+	overflow: hidden;
+}
+.light-theme a, .light-theme span {
+	float: left;
+	color: #666;
+	font-size:40px;
+	font-weight: normal;
+	text-align:center;
+	vertical-align: center;
+	border-top: 0.5px solid #CCCCCC;
+	border-left: 0.5px solid #CCCCCC;
+	border-bottom: 0.5px solid #cccccc;
+	border-bottom-style: 1px;
+	width: 149px;
+	height: 100px;
+	text-decoration: none;
+	line-height:100px;
+	background-color: #F5F5F5;
+}
+.simple-pagination li {
+	list-style: none;
+		float: left;
+}
+.light-theme .current {
+	border-top-style: none;
+	border-right-style: none;
+	background-color: #ffffff;
+}
+.edge-pager{
+	display: none;
+}
